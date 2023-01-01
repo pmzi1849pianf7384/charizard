@@ -1048,11 +1048,11 @@ end
 
 local function AimbotToCFrame()
 local CFrameToReturn;
-local TargetPart = AimlockTarget.FindFirstChild(AimlockTarget,'RealHumanoidRootPart') or AimlockTarget.FindFirstChild(AimlockTarget,'Torso')
+local TargetPart = AimlockTarget.FindFirstChild(AimlockTarget,'HumanoidRootPart') or AimlockTarget.FindFirstChild(AimlockTarget,'Torso')
 	if TargetPart and AimMode == "OldPrediction" then 
 		CFrameToReturn = TargetPart.CFrame + TargetPart.Velocity / AimbotVelocity
 	elseif TargetPart and AimMode == "Prediction" then
-		CFrameToReturn = (TargetPart.CFrame + TargetPart.Velocity / (PlayersPing < 0.912 and 4.2 or 6.338983917695)) + (TargetPart.RotVelocity / (PlayersPing < 0.912 and 4.2 or 6.338983917695))
+		CFrameToReturn = TargetPart.CFrame + TargetPart.Velocity / NewPredictionVelocity
 	elseif AimlockTarget.FindFirstChild(AimlockTarget,AimMode) then 
 		CFrameToReturn = AimlockTarget[AimMode].CFrame
 	end
